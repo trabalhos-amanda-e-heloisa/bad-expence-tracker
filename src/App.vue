@@ -1,5 +1,6 @@
 <script setup>
 import AppHeader from './composables/layout/AppHeader.vue';
+import NewExpenceForm from './composables/form/NewExpenceForm.vue';
 import { useExpenses } from './composables/useExpenses';
 
 const {
@@ -14,25 +15,17 @@ const {
     filtered,
     total,
 } = useExpenses();
+
 </script>
 
 <template>
     <div class="app">
         <div class="header">
-        <AppHeader />
+            <AppHeader :filter="filter" @changeFilter="filter = $event" />
         </div>
-        <div class="layout">
-            <div class="panel">
-                <h2>Nova despesa</h2>
-                <input v-model="title" class="input" placeholder="Descricao" />
-                <input v-model="value" class="input" placeholder="Valor" />
-                <input v-model="category" class="input" placeholder="Categoria" />
-                <div class="row">
-                    <button class="small-btn" @click="addExpense">Add</button>
-                    <button class="small-btn" @click="clearAll">Limpar tudo</button>
-                </div>
-            </div>
-
+        <div class="layout flex flex-col gap-6 p-4">
+            <NewExpenceForm v-model:title="title" v-model:value="value" v-model:category="category"
+                :addExpense="addExpense" :clearAll="clearAll" />
             <div class="panel">
                 <h2>Lista do dia</h2>
                 <table class="table">
