@@ -1,3 +1,4 @@
+@import "tailwindcss";
 * {
   box-sizing: border-box;
 }
@@ -6,25 +7,6 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f4f4;
-}
-
-.app {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 18px;
 }
 
 .layout {
@@ -58,13 +40,7 @@ body {
   gap: 6px;
 }
 
-.small-btn {
-  font-size: 11px;
-  padding: 4px 6px;
-  border: 1px solid #999;
-  background: #eee;
-  cursor: pointer;
-}
+
 
 .table {
   width: 100%;
