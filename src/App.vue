@@ -1,5 +1,6 @@
 <script setup>
 import { useExpenses } from './composables/useExpenses';
+import ExpenseList from './components/records/ExpenceList.vue';
 
 const {
     expenses,
@@ -26,6 +27,13 @@ const {
                 <button class="small-btn" @click="filter = 'other'">Outros</button>
             </div>
         </div>
+        <div>        
+            <ExpenseList
+                :filtered="filtered"
+                :total="total"
+                :removeExpense="removeExpense"
+            />
+        </div>
 
         <div class="layout">
             <div class="panel">
@@ -36,34 +44,6 @@ const {
                 <div class="row">
                     <button class="small-btn" @click="addExpense">Add</button>
                     <button class="small-btn" @click="clearAll">Limpar tudo</button>
-                </div>
-            </div>
-
-            <div class="panel">
-                <h2>Lista do dia</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Descricao</th>
-                            <th>Categoria</th>
-                            <th>Valor</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="item in filtered" :key="item.id">
-                            <td>{{ item.title }}</td>
-                            <td>{{ item.category }}</td>
-                            <td>{{ item.value }}</td>
-                            <td>
-                                <button class="small-btn" @click="removeExpense(item.id)">X</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="summary">
-                    Total do dia: {{ total }}
                 </div>
             </div>
         </div>
