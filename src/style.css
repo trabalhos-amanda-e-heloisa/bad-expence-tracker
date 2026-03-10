@@ -8,29 +8,3 @@ body {
   font-family: Arial, sans-serif;
   background: #f4f4f4;
 }
-
-.row {
-  display: flex;
-  gap: 6px;
-}
-
-
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12px;
-}
-
-.table th,
-.table td {
-  border-bottom: 1px solid #eee;
-  padding: 6px;
-  text-align: left;
-}
-
-.summary {
-  margin-top: 12px;
-  font-size: 12px;
-  color: #555;
-}
