@@ -20,25 +20,16 @@ const {
 </script>
 
 <template>
-    <div class="app">
-        <div class="header">
-            <AppHeader :filter="filter" @changeFilter="filter = $event" />
+    <div class="header">
+        <AppHeader :filter="filter" @changeFilter="filter = $event" />
+    </div>
+    <div class="md:flex justify-center w-full">
+        <div class="md:w-1/2">
+            <ExpenseList :filtered="filtered" :total="total" :removeExpense="removeExpense" />
+        </div>
+        <div class="md:w-1/2">
+            <NewExpenceForm v-model:title="title" v-model:value="value" v-model:category="category"
+                :addExpense="addExpense" :clearAll="clearAll" />
         </div>
     </div>
-        <div>        
-            <ExpenseList
-                :filtered="filtered"
-                :total="total"
-                :removeExpense="removeExpense"
-            />
-        </div>
-        <div class="layout">
-            <NewExpenceForm 
-                v-model:title="title"
-                v-model:value="value"
-                v-model:category="category"
-                :addExpense="addExpense"
-                :clearAll="clearAll"
-            />
-        </div>
 </template>

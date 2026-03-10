@@ -7,7 +7,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="bg-white border-2 border-pink-200 rounded-xl shadow-sm p-4 m-4">
+  <div class="bg-white border-2 border-pink-200 rounded-xl shadow-sm p-4 m-4 lg:m-12 md:m-10">
 
     <h2 class="text-lg font-semibold text-pink-800 text-center mb-3">
       Lista do dia
@@ -41,7 +41,7 @@ defineProps({
 
           <td class="text-right">
             <button
-              class="text-red-500 hover:text-red-700 font-bold px-2"
+              class="text-red-500 hover:text-red-700 font-bold px-2 cursor-pointer"
               @click="removeExpense(item.id)"
             >
               ✕
