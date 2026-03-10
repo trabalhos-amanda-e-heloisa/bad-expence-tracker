@@ -1,4 +1,6 @@
 <script setup>
+import AppHeader from './components/layout/AppHeader.vue';
+import NewExpenceForm from './components/form/NewExpenceForm.vue';
 import { useExpenses } from './composables/useExpenses';
 import ExpenseList from './components/records/ExpenceList.vue';
 
@@ -14,18 +16,13 @@ const {
     filtered,
     total,
 } = useExpenses();
+
 </script>
 
 <template>
     <div class="app">
         <div class="header">
-            <h1>Controle de Gastos Rapido</h1>
-            <div>
-                <button class="small-btn" @click="filter = 'all'">Tudo</button>
-                <button class="small-btn" @click="filter = 'food'">Comida</button>
-                <button class="small-btn" @click="filter = 'transport'">Transporte</button>
-                <button class="small-btn" @click="filter = 'other'">Outros</button>
-            </div>
+            <AppHeader :filter="filter" @changeFilter="filter = $event" />
         </div>
         <div>        
             <ExpenseList
@@ -34,7 +31,6 @@ const {
                 :removeExpense="removeExpense"
             />
         </div>
-
         <div class="layout">
             <div class="panel">
                 <h2>Nova despesa</h2>
@@ -47,5 +43,4 @@ const {
                 </div>
             </div>
         </div>
-    </div>
 </template>
