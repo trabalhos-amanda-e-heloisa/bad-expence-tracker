@@ -1,6 +1,6 @@
 <script setup>
-import AppHeader from './composables/layout/AppHeader.vue';
-import NewExpenceForm from './composables/form/NewExpenceForm.vue';
+import AppHeader from './components/layout/AppHeader.vue';
+import NewExpenceForm from './components/form/NewExpenceForm.vue';
 import { useExpenses } from './composables/useExpenses';
 
 const {
