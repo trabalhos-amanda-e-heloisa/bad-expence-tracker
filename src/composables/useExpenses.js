@@ -27,11 +27,23 @@ export function useExpenses() {
         return expenses.value.reduce((sum, item) => sum + Number(item.value || 0), 0);
     });
 
+    const titleError = ref('')
+    const valueError = ref('')
 
     function addExpense() {
-        if (!title.value.trim() || !value.value.trim()) {
-            alert('Preencha tudo');
-            return;
+        titleError.value = ''
+        valueError.value = ''
+
+        if (!title.value.trim()) {
+            titleError.value = 'Digite uma descrição'
+        }
+
+        if (!value.value.trim() || Number(value.value) <= 0) {
+            valueError.value = 'Digite um valor válido'
+        }
+
+        if (titleError.value || valueError.value) {
+            return
         }
         expenses.value.push({
             id: Date.now(),
@@ -68,6 +80,8 @@ export function useExpenses() {
         clearAll,
         filtered,
         total,
+        titleError,
+        valueError,
     }
 
 }
