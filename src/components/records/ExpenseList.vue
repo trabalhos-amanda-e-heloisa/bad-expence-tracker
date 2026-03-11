@@ -2,8 +2,13 @@
 defineProps({
   filtered: Array,
   total: Number,
-  removeExpense: Function
+  removeExpense: Function,
+  clearAll: Function
 })
+
+function formatCategory(category) {
+  return category.charAt(0).toUpperCase() + category.slice(1)
+}
 </script>
 
 <template>
@@ -15,7 +20,7 @@ defineProps({
 
     <div v-if="filtered.length === 0" class="text-center text-pink-600 py-10">
       <p class="text-lg font-medium">
-        Nenhuma despesa registrada hoje!
+        Nenhuma despesa registrada!
       </p>
 
       <p class="text-sm text-gray-500 mt-1">
@@ -38,7 +43,7 @@ defineProps({
           <td class="py-4">{{ item.title }}</td>
 
           <td class="text-center py-4">
-            {{ item.category }}
+            {{ formatCategory(item.category) }}
           </td>
 
           <td class="text-right py-4 font-medium">
@@ -58,6 +63,12 @@ defineProps({
     <div class="mt-4 text-right text-pink-800 font-semibold">
       Total do dia: R$ {{ Number(total).toFixed(2).replace('.', ',') }}
     </div>
+
+    <button
+      class="border border-pink-400 text-pink-700 rounded-lg px-5 py-2 hover:bg-pink-50 transition active:bg-pink-100 cursor-pointer"
+      @click="clearAll">
+      Limpar despesas
+    </button>
 
   </div>
 </template>

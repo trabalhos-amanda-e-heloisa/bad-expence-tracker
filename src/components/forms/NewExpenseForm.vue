@@ -4,7 +4,7 @@ defineProps({
   value: String,
   category: String,
   addExpense: Function,
-  clearAll: Function,
+  clearAllForms: Function,
   titleError: String,
   valueError: String
 })
@@ -39,8 +39,8 @@ const emit = defineEmits(['update:title', 'update:value', 'update:category'])
     <div class="flex justify-center gap-6 mt-5">
       <button
         class="border border-pink-400 text-pink-700 rounded-lg px-5 py-2 hover:bg-pink-50 transition active:bg-pink-100 cursor-pointer"
-        @click="clearAll">
-        Limpar tudo
+        @click="clearAllForms">
+        Limpar formulário
       </button>
       <button
         class="bg-pink-500 text-white rounded-lg px-6 py-2 hover:bg-pink-600 transition active:bg-pink-900 cursor-pointer"
