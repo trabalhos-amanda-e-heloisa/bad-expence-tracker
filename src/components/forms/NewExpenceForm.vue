@@ -4,7 +4,9 @@ defineProps({
   value: String,
   category: String,
   addExpense: Function,
-  clearAll: Function
+  clearAll: Function,
+  titleError: String,
+  valueError: String
 })
 
 const emit = defineEmits(['update:title', 'update:value', 'update:category'])
@@ -20,9 +22,15 @@ const emit = defineEmits(['update:title', 'update:value', 'update:category'])
       <input :value="title" @input="emit('update:title', $event.target.value)"
         class="w-full border border-pink-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300"
         placeholder="Descrição" />
-      <input :value="value" @input="emit('update:value', $event.target.value)"
+      <p v-if="titleError" class="text-red-500 text-sm">
+        {{ titleError }}
+      </p>
+      <input type="number" :value="value" @input="emit('update:value', $event.target.value)"
         class="w-full border border-pink-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300"
         placeholder="Valor" />
+      <p v-if="valueError" class="text-red-500 text-sm">
+        {{ valueError }}
+      </p>
       <input :value="category" @input="emit('update:category', $event.target.value)"
         class="w-full border border-pink-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300"
         placeholder="Categoria" />

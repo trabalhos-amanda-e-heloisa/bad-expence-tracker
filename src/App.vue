@@ -15,6 +15,8 @@ const {
     clearAll,
     filtered,
     total,
+    titleError,
+    valueError
 } = useExpenses();
 
 </script>
@@ -29,7 +31,7 @@ const {
         </div>
         <div class="md:w-1/2">
             <NewExpenceForm v-model:title="title" v-model:value="value" v-model:category="category"
-                :addExpense="addExpense" :clearAll="clearAll" />
+                :addExpense="addExpense" :clearAll="clearAll" :titleError="titleError" :valueError="valueError" />
         </div>
     </div>
 </template>

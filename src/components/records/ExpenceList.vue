@@ -13,7 +13,17 @@ defineProps({
       Lista do dia
     </h2>
 
-    <table class="w-full text-sm">
+    <div v-if="filtered.length === 0" class="text-center text-pink-600 py-10">
+      <p class="text-lg font-medium">
+        Nenhuma despesa registrada hoje!
+      </p>
+
+      <p class="text-sm text-gray-500 mt-1">
+        Adicione sua primeira despesa
+      </p>
+    </div>
+
+    <table v-else class="w-full text-sm">
       <thead class="text-pink-700 border-b border-pink-200">
         <tr>
           <th class="text-left py-4">Descrição</th>
@@ -24,11 +34,7 @@ defineProps({
       </thead>
 
       <tbody>
-        <tr
-          v-for="item in filtered"
-          :key="item.id"
-          class="border-b border-gray-200 hover:bg-pink-50 transition"
-        >
+        <tr v-for="item in filtered" :key="item.id" class="border-b border-gray-200 hover:bg-pink-50 transition">
           <td class="py-4">{{ item.title }}</td>
 
           <td class="text-center py-4">
@@ -36,14 +42,12 @@ defineProps({
           </td>
 
           <td class="text-right py-4 font-medium">
-            {{ item.value }}
+            R$ {{ Number(item.value).toFixed(2).replace('.', ',') }}
           </td>
 
           <td class="text-right">
-            <button
-              class="text-red-500 hover:text-red-700 font-bold px-2 cursor-pointer"
-              @click="removeExpense(item.id)"
-            >
+            <button class="text-red-500 hover:text-red-700 font-bold px-2 cursor-pointer"
+              @click="removeExpense(item.id)">
               ✕
             </button>
           </td>
@@ -52,7 +56,7 @@ defineProps({
     </table>
 
     <div class="mt-4 text-right text-pink-800 font-semibold">
-      Total do dia: {{ total }}
+      Total do dia: R$ {{ Number(total).toFixed(2).replace('.', ',') }}
     </div>
 
   </div>
