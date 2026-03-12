@@ -10,6 +10,7 @@
 - Divisão entre layout, lista e formulário realizada, separando arquivos em tópicos de acordo com suas funções;
 - Composable criado;
 - Estilos organizados por partes e usando Tailwind.
+- Uso de Vue Router e views para organizar as telas separando as páginas principais da aplicação, com o objetivo uma melhor experiência de navegação ao usuário;
 
 ##  2. Usabilidade e UX
 
